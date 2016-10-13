@@ -53,42 +53,10 @@ public class GeoServerBufferWrapper extends AbstractSelfDescribingAlgorithm {
 		
 		logger.info("this.getWellKnownName() " + this.getWellKnownName());		
 		logger.info("this.getDescription(): " + this.getDescription().toString());
-			
-		
+					
 		//Call the shim as adapter for wps request building and catalogue query
 		WPSClientAndCatalogueShim shimResult = new WPSClientAndCatalogueShim( data, wpsURL, wpsProcessID, useGeoNetworkFromWrapper);
 		Map<String,IData> result = shimResult.result;
-		
-		/*
-		//create the map for the result
-		Map<String,IData> result = new HashMap<String, IData>();
-		
-		//Wrangle the data into a HashMap suitable for use in GenericWPSClient
-		HashMap<String, Object> variables= new HashMap<String, Object>();
-		logger.info("Starting loop to create <String,Object> hashmap from the inputs");
-		logger.info("size of data map: " +data.size());
-		for (Entry<String, List<IData>> entry : data.entrySet()) {			
-		    logger.info("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-		    String inputValue2 = entry.getValue().get(0).getPayload().toString();
-		    logger.info("input value2: " + inputValue2);
-		    variables.put(entry.getKey(), inputValue2); 
-		}
-				
-		//Execute the actual WPS process    
-    	logger.info("Starting WPS call");
-		GenericWPSClient wpsClientWrapper = new GenericWPSClient(wpsURL, wpsProcessID, variables, null);
-		HashMap<String, Object> results = wpsClientWrapper.getOutputs();	
-							
-		//Bubble up the WPS outputs into this WPS
-		logger.info("size of results map: " + results.size());
-		for (Entry<String, Object> entry : results.entrySet()) {
-			logger.info("results key: " + entry.getKey());
-			logger.info("results value: " + entry.getValue());			
-			LiteralStringBinding resultBinding = new LiteralStringBinding((String)entry.getValue());
-			result.put(entry.getKey(), resultBinding);
-		}
-		logger.info("Completed WPS wrapper execute");	
-		*/
 		
 		return result;
 	}

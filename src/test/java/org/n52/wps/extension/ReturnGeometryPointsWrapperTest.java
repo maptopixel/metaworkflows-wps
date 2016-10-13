@@ -52,8 +52,8 @@ public class ReturnGeometryPointsWrapperTest {
 
 	private Map<String, List<IData>> readData() {
 
-		//LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8000/geoserver/sf/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sf:archsites&maxFeatures=50");
-		LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8005/geonetwork/srv/eng/xml.metadata.get?id=39836");
+		LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8000/geoserver/sf/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sf:archsites&maxFeatures=50");
+		//LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8005/geonetwork/srv/eng/xml.metadata.get?id=39836");
 
 		LiteralStringBinding stringBinding2 = new LiteralStringBinding("my test attribute");
 		                            		

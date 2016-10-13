@@ -1,18 +1,14 @@
 package org.n52.wps.extension;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import org.n52.wps.io.data.IData;
 import org.n52.wps.io.data.binding.literal.LiteralStringBinding;
 import org.n52.wps.server.AbstractSelfDescribingAlgorithm;
 import org.n52.wps.server.ExceptionReport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import cobweb.m24.GenericWPSClient;
 
 
 /**
@@ -28,7 +24,7 @@ public class GeoServerBufferWrapper extends AbstractSelfDescribingAlgorithm {
 	String wpsURL = "http://localhost:8000/geoserver/ows?";
 	String wpsProcessID = "gs:BufferFeatureCollection";
 	
-	private static final boolean useGeoNetwork = true;
+	private static final boolean useGeoNetworkFromWrapper = true;
 	
 	static final String INPUT = "features"; //was inputString
 	static final String INPUT_ATTRIBUTE = "distance"; //was inputString
@@ -57,7 +53,13 @@ public class GeoServerBufferWrapper extends AbstractSelfDescribingAlgorithm {
 		
 		logger.info("this.getWellKnownName() " + this.getWellKnownName());		
 		logger.info("this.getDescription(): " + this.getDescription().toString());
-					
+			
+		
+		//Call the shim as adapter for wps request building and catalogue query
+		WPSClientAndCatalogueShim shimResult = new WPSClientAndCatalogueShim( data, wpsURL, wpsProcessID, useGeoNetworkFromWrapper);
+		Map<String,IData> result = shimResult.result;
+		
+		/*
 		//create the map for the result
 		Map<String,IData> result = new HashMap<String, IData>();
 		
@@ -74,8 +76,8 @@ public class GeoServerBufferWrapper extends AbstractSelfDescribingAlgorithm {
 				
 		//Execute the actual WPS process    
     	logger.info("Starting WPS call");
-		GenericWPSClient wpsClient = new GenericWPSClient(wpsURL, wpsProcessID, variables, null,useGeoNetwork);
-		HashMap<String, Object> results = wpsClient.getOutputs();
+		GenericWPSClient wpsClientWrapper = new GenericWPSClient(wpsURL, wpsProcessID, variables, null);
+		HashMap<String, Object> results = wpsClientWrapper.getOutputs();	
 							
 		//Bubble up the WPS outputs into this WPS
 		logger.info("size of results map: " + results.size());
@@ -86,6 +88,8 @@ public class GeoServerBufferWrapper extends AbstractSelfDescribingAlgorithm {
 			result.put(entry.getKey(), resultBinding);
 		}
 		logger.info("Completed WPS wrapper execute");	
+		*/
+		
 		return result;
 	}
  	    

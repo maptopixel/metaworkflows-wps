@@ -1,8 +1,22 @@
-# 52°North WPS Skeleton Project
+# WPS Wrappers using 52°North
 
-You can use this project skeleton to develop WPS extension processes (algorithms), parsers for process inputs and generators of process outputs using Java.
+This repo is based on the WPS-extension-Skeleton project on 52North.
 
-More information is available at the [52°North Geoprocessing Community](http://52north.org/geoprocessing).
+#WPS Wrapper deployment instructions
+
+Pull and import the project to Eclipse
+
+Need to include other projects from:
+
+https://bitbucket.org/julianrosser/qa-workflow-jclone
+
+https://github.com/maptopixel/geonetwork-manage
+
+Check the branch is the metaworkflow / metagetset2 branches
+
+Export the jar of the wrapper-process-extensions (ie this repo) and probably need to tick the other repos to ensure the libraries are available from the WPS environment.
+
+
 
 ## Adding a Java Algorithm to your WPS instance
 

@@ -35,24 +35,24 @@ import org.n52.wps.server.ExceptionReport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GeoServerBufferWrapperTest {
+public class RemoteGeoServerBufferWrapperTest {
 	
-	private static final Logger logger = LoggerFactory.getLogger(GeoServerBufferWrapperTest.class);
+	private static final Logger logger = LoggerFactory.getLogger(RemoteGeoServerBufferWrapperTest.class);
 
 	@Test
 	public void testAlgo() throws ExceptionReport {
 		Map<String, List<IData>> map = readData();
 		
-		GeoServerBufferWrapper algo = new GeoServerBufferWrapper();
+		RemoteGeoServerBufferWrapper algo = new RemoteGeoServerBufferWrapper();
 		Map<String, IData> result = algo.run(map);
 		
-		Assert.assertTrue("Result not available!", result.get(GeoServerBufferWrapper.OUTPUT) != null);
-		logger.info("Got result: '{}'", result.get(GeoServerBufferWrapper.OUTPUT).getPayload().toString());
+		Assert.assertTrue("Result not available!", result.get(RemoteGeoServerBufferWrapper.OUTPUT) != null);
+		logger.info("Got result: '{}'", result.get(RemoteGeoServerBufferWrapper.OUTPUT).getPayload().toString());
 	}
 
 	private Map<String, List<IData>> readData() {
 
-		LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8000/geoserver/sf/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sf:archsites&maxFeatures=50");
+		LiteralStringBinding stringBinding = new LiteralStringBinding("http://geoprocessing.westus.cloudapp.azure.com:8082/geoserver/geomesa/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=geomesa:eventGdelt26Aug2016NEW&maxFeatures=50");
 		//LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8005/geonetwork/srv/eng/xml.metadata.get?id=39836");
 
 		LiteralStringBinding stringBinding2 = new LiteralStringBinding("100");
@@ -64,8 +64,8 @@ public class GeoServerBufferWrapperTest {
 		inputDataList2.add(stringBinding2);
 		
 		Map<String,List<IData>> map = new HashMap<String, List<IData>>();
-		map.put(GeoServerBufferWrapper.INPUT, inputDataList1);
-		map.put(GeoServerBufferWrapper.INPUT_ATTRIBUTE, inputDataList2);
+		map.put(RemoteGeoServerBufferWrapper.INPUT, inputDataList1);
+		map.put(RemoteGeoServerBufferWrapper.INPUT_ATTRIBUTE, inputDataList2);
 		return map;
 	}
 	

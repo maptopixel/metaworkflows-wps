@@ -52,14 +52,15 @@ public class GeoServerBufferWrapperTest {
 
 	private Map<String, List<IData>> readData() {
 
-		LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8000/geoserver/sf/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sf:archsites&maxFeatures=50");
-		//LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8005/geonetwork/srv/eng/xml.metadata.get?id=39836");
-
+		//LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8000/geoserver/sf/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=sf:archsites&maxFeatures=50");
+		LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8005/geonetwork/srv/eng/xml.metadata.get?id=39836");
+		//LiteralStringBinding stringBinding = new LiteralStringBinding("http://localhost:8005/geonetwork/srv/eng/xml.metadata.get?id=55803");
+		
 		LiteralStringBinding stringBinding2 = new LiteralStringBinding("100");
 		                            		
 		List<IData> inputDataList1 = new ArrayList<IData>();
 		inputDataList1.add(stringBinding);
-		
+			
 		List<IData> inputDataList2 = new ArrayList<IData>();
 		inputDataList2.add(stringBinding2);
 		

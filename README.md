@@ -1,21 +1,16 @@
 # WPS Wrappers using 52°North
 
-This repo is based on the WPS-extension-Skeleton project on 52North.
+This repo is based on the WPS-extension-Skeleton project on 52North for creating WPS. It provides wrappers to enable a WPS workflow to execute process workflows using metadata objects stored in a GeoNetwork instance. This repository does therefore rely on setting up the (Workflow-AT)[https://github.com/cobweb-eu/workflow-at] tool and a library for [parsing/querying GeoNetwork]( https://github.com/maptopixel/geonetwork-manager)
 
-#WPS Wrapper deployment instructions
+## WPS Wrapper deployment instructions
 
-Pull and import the project to Eclipse
+1. Get familiar with https://github.com/cobweb-eu/workflow-at first by following that readme. 
 
-Need to include other projects from:
+2. When confident, swith to using the '''metagetset2''' branch
 
-https://bitbucket.org/julianrosser/qa-workflow-jclone
+3. Pull and import this '''metaworkflows-wps''' project to Eclipse and pull and import https://github.com/maptopixel/geonetwork-manager
 
-https://github.com/maptopixel/geonetwork-manage
-
-Check the branch is the metaworkflow / metagetset2 branches
-
-Export the jar of the wrapper-process-extensions (ie this repo) and probably need to tick the other repos to ensure the libraries are available from the WPS environment.
-
+Export the jar of the wrapper-process-extensions (i.e. this repo) and probably need to tick the other repos to ensure the libraries are available from the WPS environment.
 
 
 ## Adding a Java Algorithm to your WPS instance
@@ -38,7 +33,6 @@ The second step could look like:
 </Repository>
 ...
 ```
-
 ### Only if you are using WPS 3.2.0 and later
 
 If you add the fully qualified name of you algorithm to the file:

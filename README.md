@@ -1,6 +1,8 @@
-# WPS Wrappers using 52°North
+# OGC Web Processing Service Wrappers using 52°North
 
-This repo is based on the WPS-extension-Skeleton project on 52North for creating WPS. It provides wrappers to enable a WPS workflow to execute process workflows using metadata objects stored in a GeoNetwork instance. This repository does therefore rely on setting up the (Workflow-AT)[https://github.com/cobweb-eu/workflow-at] tool and a library for [parsing/querying GeoNetwork]( https://github.com/maptopixel/geonetwork-manager)
+This repo contains code for wrapping an OGC Web Processing Service inside another Web Process Service.
+
+It is based on the WPS-extension-Skeleton project on 52North for creating WPS. It provides wrappers to enable a WPS workflow to execute process workflows using metadata objects stored in a GeoNetwork instance. This repository does therefore rely on setting up the (Workflow-AT)[https://github.com/cobweb-eu/workflow-at] tool and a library for [parsing/querying GeoNetwork]( https://github.com/maptopixel/geonetwork-manager)
 
 ## WPS Wrapper deployment instructions
 
